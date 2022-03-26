@@ -31,7 +31,7 @@ public class ItemDAO {
             int itemPrice= Integer.parseInt(element.select(".price .right span").text().replaceAll(",",""));
 
             ItemVO item = new ItemVO(idx[0],itemName,itemImg,itemPrice);
-            itemList.add(item);
+
             idx[0]++;
 
             itemList.add(item);
@@ -54,6 +54,4 @@ public class ItemDAO {
         Collections.sort(result,(a,b)-> b.getItemPrice()-a.getItemPrice());
         return result;
     }
-
-
 }

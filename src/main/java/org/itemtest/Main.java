@@ -9,10 +9,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+//        ItemDAO itemDAO = new ItemDAO();
+//        ItemService itemService = new ItemService(itemDAO);
+//        Scanner scanner = new Scanner(System.in);
+//        ItemUI ui = new ItemUI(itemService,scanner);
+//        ui.display();
         ItemDAO itemDAO = new ItemDAO();
-        ItemService itemService = new ItemService(itemDAO);
-        Scanner scanner = new Scanner(System.in);
-        ItemUI ui = new ItemUI(itemService,scanner);
-        ui.display();
+        System.out.println(itemDAO.getItems());
     }
 }
