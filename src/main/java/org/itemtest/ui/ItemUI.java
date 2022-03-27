@@ -19,15 +19,22 @@ public class ItemUI {
         switch (num){
 
             case 1:
-                System.out.println(itemService.itemAll());
+
+                for (int i = 0; i < itemService.itemAll().size(); i++) {
+                    System.out.println(itemService.itemAll().get(i));
+                }
                 break;
 
             case 2:
-                System.out.println(itemService.itemSortMax());
+                for (int i = 0; i < itemService.itemSortMax().size(); i++) {
+                    System.out.println(itemService.itemSortMax().get(i));
+                }
                 break;
 
             case 3:
-                System.out.println(itemService.itemSortMin());
+                for (int i = 0; i < itemService.itemSortMin().size(); i++) {
+                    System.out.println(itemService.itemSortMin().get(i));
+                }
                 break;
         }
 

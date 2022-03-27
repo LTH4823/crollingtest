@@ -9,11 +9,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 @SuppressWarnings("unchecked")
 public class ItemDAO {
 
-    private ArrayList<ItemVO> items;
+    private ArrayList<ItemVO> itemList;
 
     public ItemDAO() throws IOException {
 
@@ -23,9 +24,11 @@ public class ItemDAO {
         Elements items = document.select(".product_list2 .rightPad");
 
         final int[] idx = {0};
-        ArrayList itemList = new ArrayList<ItemVO>();
+
+        itemList = new ArrayList<>();
 
         items.stream().forEach(element -> {
+
             String itemName = element.attr("title");
             String itemImg = element.select("dt img").attr("src");
             int itemPrice= Integer.parseInt(element.select(".price .right span").text().replaceAll(",",""));
@@ -36,22 +39,23 @@ public class ItemDAO {
 
             itemList.add(item);
         });
+
     }
 
 
     public ArrayList<ItemVO> getItems(){
-        return (ArrayList<ItemVO>) items.clone();
+        return (ArrayList<ItemVO>) itemList.clone();
     }
 
     public ArrayList<ItemVO> sortMaxItems(){
         ArrayList<ItemVO> result = getItems();
-        Collections.sort(result,(a,b)-> a.getItemPrice()-b.getItemPrice());
+        Collections.sort(result,(a,b)-> b.getItemPrice()-a.getItemPrice());
         return result;
     }
 
     public ArrayList<ItemVO> sortMinItems(){
         ArrayList<ItemVO> result = getItems();
-        Collections.sort(result,(a,b)-> b.getItemPrice()-a.getItemPrice());
+        Collections.sort(result,(a,b)-> a.getItemPrice()-b.getItemPrice());
         return result;
     }
 }
